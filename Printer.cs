@@ -21,28 +21,24 @@
             PrintPixel(Borders.VerticalBorder.xRight, i, borderColor);
         }
 
-        ResetCursorPosition();
     }
 
     internal static void PrintSnakeHead(Snake snake)
     {
         var snakeColor = ConsoleColor.DarkBlue;
         PrintPixel(snake.XHead, snake.YHead, snakeColor, snake.ToString());
-        ResetCursorPosition();
     }
 
     internal static void PrintSnakeTail(Snake.SnakeTail tail)
     {
         var tailColor = ConsoleColor.Blue;
         PrintPixel(tail.X, tail.Y, tailColor);
-        ResetCursorPosition();
     }
 
     internal static void RemoveSnakeTail(Snake.SnakeTail tail)
     {
         var tailColor = ConsoleColor.Black;
         PrintPixel(tail.X, tail.Y, tailColor);
-        ResetCursorPosition();
     }
 
     static void PrintPixel(int x, int y, ConsoleColor pixelColor, string pixel = _airPixel)
@@ -50,12 +46,5 @@
         Console.SetCursorPosition(x, y);
         Console.BackgroundColor = pixelColor;
         Console.Write(pixel);
-    }
-
-    static void ResetCursorPosition()
-    {
-        Console.SetCursorPosition(0, 0);
-        Console.BackgroundColor = ConsoleColor.Black;
-
     }
 }

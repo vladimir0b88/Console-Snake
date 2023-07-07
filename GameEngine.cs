@@ -4,16 +4,18 @@ using System.Xml.Linq;
 
 internal static class GameEngine
 {
-    private static Stopwatch s_stopWatch = new();
+    private static Stopwatch _stopWatch = new();
     internal static void StartGame()
     {
         Console.Clear();
+        Console.CursorVisible = false;
+
 
         Borders.SetSize();
 
         Printer.PrintBorders();
 
-        var snake = new Snake(5, 10);
+        var snake = new Snake(6, 10);
         Printer.PrintSnakeHead(snake);
 
 
@@ -43,12 +45,12 @@ internal static class GameEngine
     {
         Snake.Directions oldDirection = snake.Direction;
 
-        s_stopWatch.Restart();
+        _stopWatch.Restart();
 
         // За время SnakeSpeed в мс
         // находим первое направление, отличающееся от исходного,
         // и изменяем направление у змеи
-        while (s_stopWatch.ElapsedMilliseconds <= GameRules.SnakeSpeed)
+        while (_stopWatch.ElapsedMilliseconds <= GameRules.SnakeSpeed)
             if (snake.Direction == oldDirection)
             {
                 Snake.Directions newDirection = ChangeSnakeDirection(snake.Direction);

@@ -6,14 +6,14 @@
 
     static internal void SetSize()
     {
-        HorizontalBorder = (x0: 0,
-                            x1: Console.WindowWidth,
-                            yTop: 0,
+        HorizontalBorder = (x0:      0,
+                            x1:      Console.WindowWidth,
+                            yTop:    0,
                             yBottom: Console.WindowHeight - 1);
 
-        VerticalBorder = (y0: 0,
-                          y1: Console.WindowHeight,
-                          xLeft: 0,
+        VerticalBorder = (y0:     0,
+                          y1:     Console.WindowHeight,
+                          xLeft:  0,
                           xRight: Console.WindowWidth - 2);
     }
 
@@ -23,10 +23,9 @@
             yHead == HorizontalBorder.yBottom)
             return true;
 
-        if (Math.Abs(xHead - VerticalBorder.xLeft) <= 2 ||
-            Math.Abs(xHead - VerticalBorder.xRight) <= 2)
+        if (xHead == VerticalBorder.xLeft ||
+            xHead == VerticalBorder.xRight)
             return true;
-
 
         return false;
     }
