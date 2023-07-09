@@ -7,7 +7,7 @@ internal static class GameEngine
     private static Stopwatch _stopWatch = new();
     private static List<PickableItem> _pickableItems = new();
 
-    private static int _eatenFoodCount = 0;
+    private static GameStatistics _statistics = new();
 
     internal static void StartGame()
     {
@@ -15,6 +15,9 @@ internal static class GameEngine
 
         var snake = new Snake(6, 10);
         Printer.PrintSnakeHead(snake);
+
+        _statistics = new GameStatistics();
+        _statistics.RefreshStatistics();
 
         GenerateFood(snake);
 
@@ -51,7 +54,6 @@ internal static class GameEngine
 
 
         _pickableItems.Clear();
-        _eatenFoodCount = 0;
         Borders.RemoveAllWalls();
 
         Borders.SetSize();
@@ -112,16 +114,18 @@ internal static class GameEngine
             case Food food:
                 {
                     _pickableItems.Remove(food);
-                    _eatenFoodCount++;
+                    _statistics.EatenFood++;
 
                     // Увеличиваем длину хвоста
                     snake.MaxTailCount += GameRules.SnakeTailIncrement;
+                    _statistics.TailLenght = snake.MaxTailCount;
 
                     // Создаем стенки
-                    if (_eatenFoodCount % GameRules.NumberOfFoodsToCreateWall == 0)
+                    if (_statistics.EatenFood % GameRules.CountOfFoodsToCreateWall == 0)
                         GenerateWalls(snake);
 
-
+                    _statistics.Score += 10 + (int)(_statistics.TailLenght * 0.20);
+                    _statistics.RefreshStatistics();
                     GenerateFood(snake);
                     break;
                 }

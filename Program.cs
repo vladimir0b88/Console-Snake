@@ -1,5 +1,5 @@
 ﻿
-
+Console.ReadKey();
 while (true)
 {
     GameEngine.StartGame();

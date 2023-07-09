@@ -9,7 +9,7 @@ internal static class GameRules
     internal const int SnakeTailIncrement = 31;
 
     // Кол-во еды для создания стенок
-    internal const int NumberOfFoodsToCreateWall = 1;
+    internal const int CountOfFoodsToCreateWall = 1;
 
     // Кол-во создаваемых стенок
     internal const int NumberOfCreateWalls = 15;

@@ -23,6 +23,20 @@
 
     }
 
+    internal static void PrintStatistics(GameStatistics stat)
+    {
+        int x = Borders.HorizontalBorder.x1+3;
+        int y = Borders.VerticalBorder.y0+2;
+
+        Console.BackgroundColor = ConsoleColor.Black;
+        foreach(string str in stat.GetStatistics())
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(str);
+            y++;
+        }
+    }
+
     internal static void PrintWall(Borders.Wall wall)
     {
         var wallColor = ConsoleColor.DarkGray;
@@ -32,14 +46,14 @@
 
     internal static void PrintSnakeHead(Snake snake)
     {
-        var snakeColor = ConsoleColor.DarkBlue;
+        var snakeColor = ConsoleColor.DarkGreen;
 
         PrintPixel(snake.XHead, snake.YHead, snakeColor, snake.ToString());
     }
 
     internal static void PrintSnakeTail(Snake.SnakeTail tail)
     {
-        var tailColor = ConsoleColor.Blue;
+        var tailColor = ConsoleColor.Green;
 
         PrintPixel(tail.X, tail.Y, tailColor);
     }
@@ -53,7 +67,7 @@
 
     internal static void PrintWallDestroyer(WallDestroyer wallDestroyer)
     {
-        var destoyerColor = ConsoleColor.Green;
+        var destoyerColor = ConsoleColor.Blue;
 
         PrintPixel(wallDestroyer.X, wallDestroyer.Y, destoyerColor);
     }

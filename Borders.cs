@@ -8,19 +8,19 @@ internal static class Borders
 
     private static List<Wall> _walls = new();
 
-
+    private static int _rightMargin = 20;
 
     static internal void SetSize()
     {
         HorizontalBorder = (x0: 0,
-                            x1: Console.WindowWidth,
+                            x1: Console.WindowWidth - _rightMargin,
                             yTop: 0,
                             yBottom: Console.WindowHeight - 1);
 
         VerticalBorder = (y0: 0,
                           y1: Console.WindowHeight,
                           xLeft: 0,
-                          xRight: Console.WindowWidth - 2);
+                          xRight: Console.WindowWidth - _rightMargin);
 
     }
 
