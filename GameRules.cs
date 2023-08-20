@@ -12,9 +12,9 @@ internal static class GameRules
     internal const int CountOfFoodsToCreateWall = 1;
 
     // Кол-во создаваемых стенок
-    internal const int NumberOfCreateWalls = 15;
+    internal const int CreateWallsAmount = 15;
 
     // Кол-во удаляемых стен WallDestroyer
-    internal const int NumberOfRemoveWalls = 5;
+    internal const int RemoveWallsAmount = 7;
 
 }

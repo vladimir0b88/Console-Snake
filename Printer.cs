@@ -5,20 +5,20 @@
     internal static void PrintBorders()
     {
         // Цвет границ
-        var wallColor = ConsoleColor.White;
+        var borderColor = ConsoleColor.White;
 
         // Верхняя и нижняя границы
         for (int i = Borders.HorizontalBorder.x0; i < Borders.HorizontalBorder.x1; i += 2)
         {
-            PrintPixel(i, Borders.HorizontalBorder.yTop, wallColor);
-            PrintPixel(i, Borders.HorizontalBorder.yBottom, wallColor);
+            PrintPixel(i, Borders.HorizontalBorder.yTop, borderColor);
+            PrintPixel(i, Borders.HorizontalBorder.yBottom, borderColor);
         }
 
         // Левая и правая границы
         for (int i = Borders.VerticalBorder.y0; i < Borders.VerticalBorder.y1; i++)
         {
-            PrintPixel(Borders.VerticalBorder.xLeft, i, wallColor);
-            PrintPixel(Borders.VerticalBorder.xRight, i, wallColor);
+            PrintPixel(Borders.VerticalBorder.xLeft, i, borderColor);
+            PrintPixel(Borders.VerticalBorder.xRight, i, borderColor);
         }
 
     }
@@ -29,11 +29,11 @@
         int y = Borders.VerticalBorder.y0+2;
 
         Console.BackgroundColor = ConsoleColor.Black;
+
         foreach(string str in stat.GetStatistics())
         {
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition(x, y++);
             Console.Write(str);
-            y++;
         }
     }
 
@@ -84,5 +84,29 @@
         Console.SetCursorPosition(x, y);
         Console.BackgroundColor = pixelColor;
         Console.Write(pixel);
+    }
+
+    internal static void ClearConsole()
+    {
+        Console.BackgroundColor = ConsoleColor.Black;
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Clear();
+        Console.CursorVisible = false;
+    }
+
+    internal static void PrintMenuElement(MenuElement element, bool isSelectedElement)
+    {
+        if(isSelectedElement)
+        {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+        }
+        else
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        Console.WriteLine(element);
     }
 }

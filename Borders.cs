@@ -8,20 +8,26 @@ internal static class Borders
 
     private static List<Wall> _walls = new();
 
+    internal static int WallsCount
+    {
+        get { return _walls.Count; }
+    }
+
     private static int _rightMargin = 20;
 
     static internal void SetSize()
     {
         HorizontalBorder = (x0: 0,
-                            x1: Console.WindowWidth - _rightMargin,
+                            x1: Round(Console.WindowWidth) - _rightMargin,
                             yTop: 0,
                             yBottom: Console.WindowHeight - 1);
 
         VerticalBorder = (y0: 0,
                           y1: Console.WindowHeight,
                           xLeft: 0,
-                          xRight: Console.WindowWidth - _rightMargin);
+                          xRight: Round(Console.WindowWidth) - _rightMargin);
 
+        int Round(int num) => num - num % 2;
     }
 
     static internal bool IsCrashIntoBorders(int xHead, int yHead)
@@ -68,6 +74,6 @@ internal static class Borders
         _walls.Clear();
     }
 
-    internal record struct Wall(int X, int Y);
+    internal readonly record struct Wall(int X, int Y);
 }
 

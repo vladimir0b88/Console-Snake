@@ -66,7 +66,7 @@ internal class Snake
     {
         if (_snakeTails.Count > 0)
         {
-            var removedTail = _snakeTails.Dequeue();
+            SnakeTail removedTail = _snakeTails.Dequeue();
 
             Printer.RemovePixel(removedTail.X, removedTail.Y);
         }
@@ -101,5 +101,5 @@ internal class Snake
     };
 
 
-    internal record struct SnakeTail(int X, int Y);
+    internal readonly record struct SnakeTail(int X, int Y);
 }

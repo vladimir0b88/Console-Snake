@@ -1,12 +1,49 @@
 ﻿
 internal class GameStatistics
 {
-    internal int Score { get; set; } = 0;
+    private int _score = 0;
+    internal int Score
+    {
+        get { return _score; }
+        set
+        {
+            _score = value;
+            RefreshStatistics();
+        }
+    }
 
-    internal int EatenFood { get; set; } = 0;
-    internal int RemovedWalls { get; set; } = 0;
+    private int _eatenFood = 0;
+    internal int EatenFood
+    {
+        get { return _eatenFood; }
+        set
+        {
+            _eatenFood = value;
+            RefreshStatistics();
+        }
+    }
 
-    internal int TailLenght { get; set; } = 0;
+    private int _removedWalls = 0;
+    internal int RemovedWalls
+    {
+        get { return _removedWalls; }
+        set
+        {
+            _removedWalls = value;
+            RefreshStatistics();
+        }
+    }
+
+    private int _tailLenght = 0;
+    internal int TailLenght
+    {
+        get { return _tailLenght; }
+        set
+        {
+            _tailLenght = value;
+            RefreshStatistics();
+        }
+    }
 
     internal void RefreshStatistics()
     {
