@@ -79,7 +79,7 @@ class Menu
                 case ConsoleKey.RightArrow or ConsoleKey.Enter or ConsoleKey.D:
                     action = MenuAction.Enter; break;
 
-                case ConsoleKey.LeftArrow or ConsoleKey.Escape or ConsoleKey.A:
+                case ConsoleKey.Escape:
                     action = MenuAction.Exit; break;
             }
 

@@ -17,7 +17,7 @@ internal class Snake
 
     internal int TailCount { get { return _snakeTails.Count; } }
 
-    internal int MaxTailCount { get; set; } = 5;
+    internal int MaxTailLength { get; set; } = 5;
 
     internal Snake(int xHead, int yHead, Directions direction = Directions.Right)
     {

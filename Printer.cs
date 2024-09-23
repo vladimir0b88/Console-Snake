@@ -25,12 +25,12 @@
 
     internal static void PrintStatistics(GameStatistics stat)
     {
-        int x = Borders.HorizontalBorder.x1+3;
-        int y = Borders.VerticalBorder.y0+2;
+        int x = Borders.HorizontalBorder.x1 + 3;
+        int y = Borders.VerticalBorder.y0 + 2;
 
         Console.BackgroundColor = ConsoleColor.Black;
 
-        foreach(string str in stat.GetStatistics())
+        foreach (string str in stat.GetStatistics())
         {
             Console.SetCursorPosition(x, y++);
             Console.Write(str);
@@ -96,7 +96,7 @@
 
     internal static void PrintMenuElement(MenuElement element, bool isSelectedElement)
     {
-        if(isSelectedElement)
+        if (isSelectedElement)
         {
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
@@ -108,5 +108,18 @@
         }
 
         Console.WriteLine(element);
+    }
+
+    internal static void PrintGameOver()
+    {
+        string text = "Game over";
+        int x = (Borders.HorizontalBorder.x1 - (Borders.HorizontalBorder.x0 + text.Length)) / 2;
+        int y = (Borders.VerticalBorder.y1 - Borders.VerticalBorder.y0) / 2;
+
+        Console.SetCursorPosition(x, y);
+
+        Console.BackgroundColor = ConsoleColor.Black;
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.Write(text);
     }
 }

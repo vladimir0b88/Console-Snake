@@ -31,13 +31,18 @@ internal static class GameEngine
 
 
             if (CheckGameCompletionConditions())
+            {
+                Printer.PrintGameOver();
+                Console.ReadKey();
                 break;
+            }    
+                
 
 
             PickUpItem();
 
 
-            if (_snake.MaxTailCount <= _snake.TailCount)
+            if (_snake.MaxTailLength <= _snake.TailCount)
                 _snake.RemoveLastTail();
         }
 
@@ -49,7 +54,7 @@ internal static class GameEngine
         Printer.ClearConsole();
 
 
-        _pickableItems.Clear();
+        _pickableItems = new List<PickableItem>();
 
 
         _snake = new Snake(6, 10);
@@ -125,8 +130,8 @@ internal static class GameEngine
                     food.Pick();
 
                     // Увеличиваем длину хвоста
-                    _snake.MaxTailCount += GameRules.SnakeTailIncrement;
-                    _statistics.TailLenght = _snake.MaxTailCount;
+                    _snake.MaxTailLength += GameRules.SnakeTailIncrement;
+                    _statistics.TailLenght = _snake.MaxTailLength;
 
                     // Создаем стенки
                     if (_statistics.EatenFood % GameRules.CountOfFoodsToCreateWall == 0)
@@ -142,13 +147,13 @@ internal static class GameEngine
                 {
                     _pickableItems.Remove(destroyer);
 
-                    int wallsCount = Borders.WallsCount;
+                    int oldWallsCount = Borders.WallsCount;
 
                     destroyer.Pick();
 
-                    if (wallsCount != Borders.WallsCount)
+                    if (oldWallsCount != Borders.WallsCount)
                     {
-                        _statistics.RemovedWalls += wallsCount-Borders.WallsCount;
+                        _statistics.RemovedWalls += oldWallsCount - Borders.WallsCount;
                         _statistics.Score += (int)(_statistics.RemovedWalls * 0.20);
                     }
 

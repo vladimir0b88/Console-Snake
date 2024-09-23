@@ -1,4 +1,5 @@
-﻿
+﻿using System.Runtime.InteropServices;
+
 internal abstract class PickableItem
 {
     internal int X { get; }
@@ -33,7 +34,11 @@ internal class Food : PickableItem
 
     void Beep()
     {
-        Task.Run(() => Console.Beep(1500, 300));
+        Task.Run(() =>
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                Console.Beep(1500, 300);
+        });
     }
 }
 
@@ -52,9 +57,12 @@ internal class WallDestroyer : PickableItem
     {
         Task.Run(() =>
         {
-            Console.Beep(700, 120);
-            Console.Beep(900, 120);
-            Console.Beep(850, 150);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Console.Beep(700, 120);
+                Console.Beep(900, 120);
+                Console.Beep(850, 150);
+            }
         });
     }
 }

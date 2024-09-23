@@ -6,15 +6,15 @@ internal static class GameRules
     internal const int SnakeSpeed = 100;
 
     // Кол-во добавляемых хвостов после еды
-    internal const int SnakeTailIncrement = 31;
+    internal const int SnakeTailIncrement = 3;
 
     // Кол-во еды для создания стенок
     internal const int CountOfFoodsToCreateWall = 1;
 
     // Кол-во создаваемых стенок
-    internal const int CreateWallsAmount = 15;
+    internal const int CreateWallsAmount = 11;
 
     // Кол-во удаляемых стен WallDestroyer
-    internal const int RemoveWallsAmount = 7;
+    internal const int RemoveWallsAmount = 3;
 
 }
